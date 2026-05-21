@@ -1,50 +1,221 @@
+
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Футбольные прогнозы</title>
+  <title>Football Pro AI | Albert Shaulov</title>
 
   <style>
-    body{
-      margin:0;
-      font-family:Arial;
-      background:#0f172a;
-      color:white;
-      text-align:center;
+    * {
+      box-sizing: border-box;
     }
 
-    header{
-      background:#16a34a;
-      padding:20px;
-      font-size:28px;
-      font-weight:bold;
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #020617, #0f172a);
+      color: white;
     }
 
-    .card{
-      background:#1e293b;
-      margin:20px;
-      padding:20px;
-      border-radius:15px;
-      box-shadow:0 0 10px rgba(0,0,0,0.5);
+    header {
+      padding: 30px 18px;
+      text-align: center;
+      background: linear-gradient(135deg, #16a34a, #0ea5e9);
     }
 
-    .team{
-      font-size:24px;
-      margin:10px 0;
+    header h1 {
+      margin: 0;
+      font-size: 34px;
     }
 
-    .prediction{
-      color:#22c55e;
-      font-size:22px;
-      font-weight:bold;
+    header p {
+      margin: 10px 0 0;
+      font-size: 17px;
     }
 
-    footer{
-      margin-top:40px;
-      padding:20px;
-      background:#111827;
-      color:#9ca3af;
+    .nav {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 15px;
+      background: #020617;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav a {
+      color: white;
+      text-decoration: none;
+      background: #1e293b;
+      padding: 10px 15px;
+      border-radius: 20px;
+      white-space: nowrap;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 20px;
+    }
+
+    h2 {
+      color: #22c55e;
+      font-size: 27px;
+      margin-bottom: 15px;
+    }
+
+    .card {
+      background: #1e293b;
+      border-radius: 22px;
+      padding: 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.45);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .match-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .club {
+      width: 38%;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .logo {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 8px;
+      font-size: 32px;
+    }
+
+    .vs {
+      font-size: 22px;
+      color: #94a3b8;
+      font-weight: bold;
+    }
+
+    .prediction {
+      margin-top: 18px;
+      padding: 14px;
+      background: rgba(34,197,94,0.15);
+      border-radius: 14px;
+      color: #22c55e;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .live {
+      margin-top: 12px;
+      color: #38bdf8;
+      font-size: 18px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 7px 12px;
+      border-radius: 20px;
+      background: #0f172a;
+      color: #facc15;
+      font-weight: bold;
+    }
+
+    .vip {
+      background: linear-gradient(135deg, #f59e0b, #dc2626);
+      color: white;
+      text-align: center;
+    }
+
+    .ad {
+      background: #111827;
+      border: 2px dashed #22c55e;
+      text-align: center;
+      color: #d1d5db;
+    }
+
+    .btn {
+      display: block;
+      text-align: center;
+      margin: 14px auto;
+      padding: 16px 22px;
+      max-width: 360px;
+      border-radius: 16px;
+      text-decoration: none;
+      font-size: 21px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .telegram {
+      background: #229ED9;
+    }
+
+    .contact {
+      background: #16a34a;
+    }
+
+    .pay {
+      background: #f59e0b;
+      color: #111827;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #1e293b;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid #334155;
+      text-align: center;
+      font-size: 15px;
+    }
+
+    th {
+      background: #0f172a;
+      color: #22c55e;
+    }
+
+    .news {
+      line-height: 1.6;
+      font-size: 18px;
+    }
+
+    .notice {
+      background: rgba(14,165,233,0.15);
+      color: #7dd3fc;
+      padding: 15px;
+      border-radius: 16px;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    footer {
+      background: #020617;
+      color: #94a3b8;
+      text-align: center;
+      padding: 25px;
+      margin-top: 30px;
+      font-size: 16px;
     }
   </style>
 </head>
@@ -52,30 +223,188 @@
 <body>
 
 <header>
-⚽ Футбольные прогнозы
+  <h1>⚽ Football Pro AI</h1>
+  <p>Прогнозы, live score, VIP и аналитика от Albert Shaulov</p>
 </header>
 
-<div class="card">
-  <div class="team">Ajax vs PSV</div>
-  <div class="prediction">Прогноз: Победа Ajax</div>
+<div class="nav">
+  <a href="#matches">Матчи</a>
+  <a href="#vip">VIP</a>
+  <a href="#live">Live</a>
+  <a href="#table">Таблица</a>
+  <a href="#news">Новости</a>
+  <a href="#ads">Реклама</a>
+  <a href="#contact">Контакт</a>
 </div>
 
-<div class="card">
-  <div class="team">Inter vs Bologna</div>
-  <div class="prediction">Прогноз: Победа Inter</div>
-</div>
+<section id="matches">
+  <h2>🔥 Прогнозы на сегодня</h2>
 
-<div class="card">
-  <div class="team">Chelsea vs Tottenham</div>
-  <div class="prediction">Прогноз: Обе забьют</div>
-</div>
+  <div class="card">
+    <div class="match-top">
+      <div class="club">
+        <div class="logo">❌</div>
+        Ajax
+      </div>
+      <div class="vs">VS</div>
+      <div class="club">
+        <div class="logo">🔴</div>
+        PSV
+      </div>
+    </div>
+    <div class="prediction">AI-прогноз: Победа Ajax или 1X</div>
+    <div class="live">Live Score: ожидается</div>
+    <div class="tag">Уверенность: 72%</div>
+  </div>
+
+  <div class="card">
+    <div class="match-top">
+      <div class="club">
+        <div class="logo">🔵</div>
+        Inter
+      </div>
+      <div class="vs">VS</div>
+      <div class="club">
+        <div class="logo">🔴</div>
+        Bologna
+      </div>
+    </div>
+    <div class="prediction">AI-прогноз: Inter не проиграет</div>
+    <div class="live">Live Score: ожидается</div>
+    <div class="tag">Уверенность: 78%</div>
+  </div>
+
+  <div class="card">
+    <div class="match-top">
+      <div class="club">
+        <div class="logo">🔵</div>
+        Chelsea
+      </div>
+      <div class="vs">VS</div>
+      <div class="club">
+        <div class="logo">⚪</div>
+        Tottenham
+      </div>
+    </div>
+    <div class="prediction">AI-прогноз: Обе забьют</div>
+    <div class="live">Live Score: ожидается</div>
+    <div class="tag">Уверенность: 69%</div>
+  </div>
+</section>
+
+<section id="vip">
+  <h2>👑 VIP-раздел</h2>
+  <div class="card vip">
+    <h3>💎 VIP прогнозы</h3>
+    <p>Здесь будут самые сильные прогнозы дня, экспрессы, аналитика и закрытые рекомендации.</p>
+  </div>
+
+  <a class="btn pay" href="https://t.me/my_Albhelp_bot" target="_blank">
+    💳 Купить VIP-подписку
+  </a>
+</section>
+
+<section id="live">
+  <h2>📡 Live Score</h2>
+  <div class="card">
+    <p>Ajax vs PSV — 0:0</p>
+    <p>Inter vs Bologna — 0:0</p>
+    <p>Chelsea vs Tottenham — 0:0</p>
+  </div>
+
+  <div class="notice">
+    Сейчас это демо-блок. Настоящий live score подключим через футбольный API.
+  </div>
+</section>
+
+<section id="table">
+  <h2>📊 Таблица лиги</h2>
+
+  <table>
+    <tr>
+      <th>Место</th>
+      <th>Клуб</th>
+      <th>Очки</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Inter</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>PSV</td>
+      <td>78</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Ajax</td>
+      <td>71</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Chelsea</td>
+      <td>65</td>
+    </tr>
+  </table>
+</section>
+
+<section id="news">
+  <h2>📰 Новости футбола</h2>
+
+  <div class="card news">
+    ⚽ Сегодня ожидаются важные матчи в европейских лигах.<br>
+    🔥 VIP-прогнозы будут доступны через Telegram-бота.<br>
+    📈 Раздел новостей скоро будет обновляться автоматически.
+  </div>
+</section>
+
+<section id="ads">
+  <h2>💰 Реклама и монетизация</h2>
+
+  <div class="card ad">
+    Место для Google AdSense<br><br>
+    Здесь позже будет рекламный блок после подключения AdSense.
+  </div>
+
+  <div class="card">
+    ✅ VIP-подписка<br>
+    ✅ Реклама Google AdSense<br>
+    ✅ Telegram-бот<br>
+    ✅ Партнёрские ссылки<br>
+    ✅ Платные прогнозы<br>
+    ✅ Спонсорские публикации
+  </div>
+</section>
+
+<section id="push">
+  <h2>🔔 Push-уведомления</h2>
+
+  <div class="card">
+    Получай уведомления о новых прогнозах, VIP-матчах и live score.
+  </div>
+
+  <div class="notice">
+    Push-уведомления подключим позже через специальный сервис.
+  </div>
+</section>
+
+<section id="contact">
+  <h2>🤖 Telegram и связь</h2>
+
+  <a class="btn telegram" href="https://t.me/my_Albhelp_bot" target="_blank">
+    📲 Открыть Telegram-бота
+  </a>
+
+  <a class="btn contact" href="https://t.me/my_Albhelp_bot" target="_blank">
+    📩 Связаться со мной
+  </a>
+</section>
 
 <footer>
-Сайт создан Альбертом Шауловым
+  Сайт создан Альбертом Шауловым<br>
+  Football Pro AI © 2026
 </footer>
-  <a href="https://t.me/my_Albhelp_bot" target="_blank" style="display:inline-block;padding:15px 25px;background:#229ED9;color:white;text-decoration:none;border-radius:12px;font-size:22px;font-weight:bold;margin:30px;">
-📲 Открыть Telegram-бота
-</a>
 
 </body>
 </html>
